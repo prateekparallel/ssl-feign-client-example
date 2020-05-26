@@ -1,0 +1,34 @@
+server:
+  port: 8443
+
+
+spring:
+  application.name: global-repository
+  cloud.config:
+    discovery:
+      enabled: true
+      serviceId: demo-config-server
+    fail-fast: true
+    retry:
+      initialInterval: 2000
+      maxAttempts: 30
+  mvc.servlet.load-on-startup: 1
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:9001/eureka}
+    registryFetchIntervalSeconds: 1
+  instance:
+    hostname: localhost
+    secure-port-enabled: true
+    non-secure-port-enabled: false
+    #preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 1
+    #nonSecurePortEnabled: false
+    #securePortEnabled: true
+    statusPageUrl: https://${eureka.hostname}:${server.port}/actuator/info
+    healthCheckUrl: https://${eureka.hostname}:${server.port}/health
+    homePageUrl: https://${eureka.hostname}:${server.port}/
+
+

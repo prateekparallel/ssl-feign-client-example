@@ -1,0 +1,37 @@
+server.port=56000
+spring.profiles.active=@spring.profiles.active@
+
+
+spring.datasource.url= jdbc:postgresql://localhost:5432/globalrepo 
+spring.datasource.username=postgres
+spring.datasource.password=deva1972 
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto=validate
+
+# Number of ms to wait before throwing an exception if no connection is available.
+spring.datasource.tomcat.max-wait=10000
+
+# Maximum number of active connections that can be allocated from this pool at the same time.
+spring.datasource.tomcat.max-active=50
+
+# Validate the connection before borrowing it from the pool.
+spring.datasource.tomcat.test-on-borrow=true
+#SSL Key Info
+#security.require-ssl=true
+server.ssl.key-store-password=deva1972
+server.ssl.key-store=src/main/resources/keyStore.jks
+server.ssl.key-store-type=JKS
+#we need client certificate for handshaking
+# Trust store that holds SSL certificates.
+server.ssl.trust-store=src/main/resources/trustStore.jks
+# Password used to access the trust store.
+server.ssl.trust-store-password=deva1972
+# Type of the trust store.
+server.ssl.trust-store-type=JKS
+# Whether client authentication is wanted ("want") or needed ("need").
+server.ssl.client-auth=need
